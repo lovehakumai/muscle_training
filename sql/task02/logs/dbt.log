@@ -1,0 +1,125 @@
+{"data":{"log_version":3,"version":"=2.0.0-preview.205"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"01a02f41-420e-7a70-b15e-3d57f2e85bc1","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.205","name":"MainReportVersion","pid":56980,"thread":"tokio-rt-worker","ts":"2026-08-23T15:33:21.058449Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"/Users/uramasaharu/.local/bin/dbt license info --json --log-format json","log_format":"json","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"01a02f41-420e-7a70-b15e-3d57f2e85bc1","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false,\"manage_state\":false}","name":"MainReportArgs","pid":56980,"thread":"tokio-rt-worker","ts":"2026-08-23T15:33:21.058460Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"01a02f41-420e-7a70-b15e-3d57f2e85bc1","level":"debug","msg":"No platform credentials found, skipping remote license","name":"Generic","pid":56980,"thread":"tokio-rt-worker","ts":"2026-08-23T15:33:21.173362Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"01a02f41-420e-7a70-b15e-3d57f2e85bc1","level":"debug","msg":"Trial license from file /Users/uramasaharu/.dbt/license.trial is expired","name":"Generic","pid":56980,"thread":"tokio-rt-worker","ts":"2026-08-23T15:33:21.176156Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"trial_expired\",\n  \"licensing_enabled\": true,\n  \"expires_at\": \"2026-06-20T11:25:22+00:00\",\n  \"license_type\": \"trial\"\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"01a02f41-420e-7a70-b15e-3d57f2e85bc1","level":"info","msg":"{\n  \"status\": \"trial_expired\",\n  \"licensing_enabled\": true,\n  \"expires_at\": \"2026-06-20T11:25:22+00:00\",\n  \"license_type\": \"trial\"\n}","name":"ShowNode","pid":56980,"thread":"tokio-rt-worker","ts":"2026-08-23T15:33:21.176283Z"}}
+{"data":{"completed_at":"2026-08-23T15:33:21.540302Z","elapsed":0.4821859896183014,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"01a02f41-420e-7a70-b15e-3d57f2e85bc1","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [482ms]","name":"CommandCompleted","pid":56980,"thread":"tokio-rt-worker","ts":"2026-08-23T15:33:21.540705Z"}}
+[0m22:44:22.814713 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108af07a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109928b60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10999d400>]}
+
+
+============================== 22:44:22.816951 | adc68491-40a6-4034-a65f-b536cfc27742 ==============================
+[0m22:44:22.816951 [info ] [MainThread]: Running with dbt=1.12.3
+[0m22:44:22.817238 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'indirect_selection': 'eager', 'warn_error': 'None', 'static_parser': 'True', 'log_cache_events': 'False', 'profiles_dir': '/Users/uramasaharu/.dbt', 'target_path': 'None', 'empty': 'None', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'quiet': 'False', 'log_format': 'default', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'use_colors': 'True', 'no_print': 'None', 'invocation_command': 'dbt init --profile muscle_training', 'send_anonymous_usage_stats': 'True', 'introspect': 'True', 'log_path': 'logs', 'version_check': 'True', 'printer_width': '80', 'hints_enabled': 'True', 'write_json': 'True', 'fail_fast': 'False'}
+[0m22:44:35.104984 [debug] [MainThread]: Starter project path: /Users/uramasaharu/Documents/develop/muscle_training/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m22:44:35.122044 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m22:44:35.122728 [info ] [MainThread]: dbt version: 1.12.3
+[0m22:44:35.122975 [info ] [MainThread]: python version: 3.12.0
+[0m22:44:35.123176 [info ] [MainThread]: python path: /Users/uramasaharu/Documents/develop/muscle_training/.venv/bin/python
+[0m22:44:35.123377 [info ] [MainThread]: os info: macOS-26.5.2-arm64-arm-64bit
+[0m22:44:35.965238 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m22:44:35.965604 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m22:44:35.965791 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m22:44:36.025790 [info ] [MainThread]: Using profiles dir at /Users/uramasaharu/.dbt
+[0m22:44:36.026041 [info ] [MainThread]: Using profiles.yml file at /Users/uramasaharu/.dbt/profiles.yml
+[0m22:44:36.026171 [info ] [MainThread]: Using dbt_project.yml file at /Users/uramasaharu/Documents/develop/muscle_training/task02/dbt_project.yml
+[0m22:44:36.026638 [info ] [MainThread]: adapter type: snowflake
+[0m22:44:36.026760 [info ] [MainThread]: adapter version: 1.12.0
+[0m22:44:36.096172 [info ] [MainThread]: Configuration:
+[0m22:44:36.096431 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m22:44:36.096561 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m22:44:36.096675 [info ] [MainThread]: Required dependencies:
+[0m22:44:36.096814 [debug] [MainThread]: Executing "git --help"
+[0m22:44:36.110846 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:44:36.111662 [debug] [MainThread]: STDERR: "b''"
+[0m22:44:36.111926 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:44:36.112134 [info ] [MainThread]: Connection:
+[0m22:44:36.112295 [info ] [MainThread]:   account: WFGWVJM-PE63516
+[0m22:44:36.112413 [info ] [MainThread]:   user: MASAHARUURA
+[0m22:44:36.112552 [info ] [MainThread]:   database: MUSCLE_DB_TASK01
+[0m22:44:36.112656 [info ] [MainThread]:   warehouse: MUSCLE_WH
+[0m22:44:36.112759 [info ] [MainThread]:   role: SYSADMIN
+[0m22:44:36.112859 [info ] [MainThread]:   schema: PUBLIC
+[0m22:44:36.112961 [info ] [MainThread]:   authenticator: None
+[0m22:44:36.113062 [info ] [MainThread]:   oauth_client_id: None
+[0m22:44:36.113162 [info ] [MainThread]:   query_tag: None
+[0m22:44:36.113263 [info ] [MainThread]:   client_session_keep_alive: False
+[0m22:44:36.113369 [info ] [MainThread]:   host: None
+[0m22:44:36.113470 [info ] [MainThread]:   port: None
+[0m22:44:36.113569 [info ] [MainThread]:   proxy_host: None
+[0m22:44:36.113675 [info ] [MainThread]:   proxy_port: None
+[0m22:44:36.113773 [info ] [MainThread]:   protocol: None
+[0m22:44:36.113874 [info ] [MainThread]:   connect_retries: 1
+[0m22:44:36.113976 [info ] [MainThread]:   connect_timeout: None
+[0m22:44:36.114074 [info ] [MainThread]:   retry_on_database_errors: False
+[0m22:44:36.114175 [info ] [MainThread]:   retry_all: False
+[0m22:44:36.114277 [info ] [MainThread]:   insecure_mode: False
+[0m22:44:36.114375 [info ] [MainThread]:   reuse_connections: True
+[0m22:44:36.114477 [info ] [MainThread]:   s3_stage_vpce_dns_name: None
+[0m22:44:36.114580 [info ] [MainThread]:   workload_identity_provider: None
+[0m22:44:36.114679 [info ] [MainThread]:   workload_identity_entra_resource: None
+[0m22:44:36.114779 [info ] [MainThread]:   platform_detection_timeout_seconds: 0.0
+[0m22:44:36.115040 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m22:44:36.183177 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m22:44:36.185682 [debug] [MainThread]: Using snowflake connection "debug"
+[0m22:44:36.185851 [debug] [MainThread]: On debug: select 1 as id
+[0m22:44:36.185959 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m22:44:37.658033 [debug] [MainThread]: SQL status: SUCCESS 1 in 1.472 seconds
+[0m22:44:37.659581 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m22:44:37.660006 [info ] [MainThread]: [32mAll checks passed![0m
+[0m22:44:37.660459 [info ] [MainThread]: Your new dbt project "task02" was created!
+Initialized new project in /Users/uramasaharu/Documents/develop/muscle_training/task02/task02
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m22:44:37.680049 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 14.901794, "process_in_blocks": "0", "process_kernel_time": 0.277056, "process_mem_max_rss": "215793664", "process_out_blocks": "0", "process_user_time": 1.094928}
+[0m22:44:37.680560 [debug] [MainThread]: Command `dbt init` succeeded at 22:44:37.680484 after 14.90 seconds
+[0m22:44:37.680813 [debug] [MainThread]: Connection 'debug' was left open.
+[0m22:44:37.681001 [debug] [MainThread]: On debug: Close
+[0m22:44:37.876121 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10999d730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a01b470>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1099c4800>]}
+[0m22:44:37.876546 [debug] [MainThread]: Flushing usage events
+[0m22:44:38.955758 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:30:57.122104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10516b770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10752f6b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10752f200>]}
+
+
+============================== 23:30:57.124455 | 9f8f94ec-0738-4dca-b8cc-3baf156211cc ==============================
+[0m23:30:57.124455 [info ] [MainThread]: Running with dbt=1.12.3
+[0m23:30:57.124713 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'no_print': 'None', 'version_check': 'True', 'debug': 'False', 'maximum_seed_size_mib': '1', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'profiles_dir': '/Users/uramasaharu/.dbt', 'static_parser': 'True', 'printer_width': '80', 'warn_error': 'None', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'write_json': 'True', 'indirect_selection': 'eager', 'quiet': 'False', 'log_format': 'default', 'use_colors': 'True', 'invocation_command': 'dbt build --select stg_omnicart__raw_user_clickstream', 'introspect': 'True', 'empty': 'False', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'hints_enabled': 'True'}
+[0m23:30:57.125008 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/uramasaharu/Documents/develop/muscle_training/sql/task02/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m23:30:57.126794 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": false, "command_wall_clock_time": 0.043451335, "process_in_blocks": "0", "process_kernel_time": 0.089874, "process_mem_max_rss": "121159680", "process_out_blocks": "0", "process_user_time": 0.508502}
+[0m23:30:57.126992 [debug] [MainThread]: Command `dbt build` failed at 23:30:57.126959 after 0.04 seconds
+[0m23:30:57.127129 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107474080>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1067ade80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10752f050>]}
+[0m23:30:57.127257 [debug] [MainThread]: Flushing usage events
+[0m23:30:57.981764 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:31:32.620703 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b613d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1131ed880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1131ed460>]}
+
+
+============================== 23:31:32.622788 | 98830251-8841-4cad-a246-9c85847b0b9a ==============================
+[0m23:31:32.622788 [info ] [MainThread]: Running with dbt=1.12.3
+[0m23:31:32.623054 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'use_experimental_parser': 'False', 'quiet': 'False', 'printer_width': '80', 'log_path': 'logs', 'use_colors': 'True', 'warn_error': 'None', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt clean', 'write_json': 'True', 'static_parser': 'True', 'hints_enabled': 'True', 'debug': 'False', 'fail_fast': 'False', 'maximum_seed_size_mib': '1', 'profiles_dir': '/Users/uramasaharu/.dbt', 'introspect': 'True', 'partial_parse': 'True'}
+[0m23:31:32.623539 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/uramasaharu/Documents/develop/muscle_training/sql/task02/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m23:31:32.625239 [debug] [MainThread]: Resource report: {"command_name": "clean", "command_success": false, "command_wall_clock_time": 0.038726166, "process_in_blocks": "0", "process_kernel_time": 0.087759, "process_mem_max_rss": "120029184", "process_out_blocks": "0", "process_user_time": 0.51236}
+[0m23:31:32.625426 [debug] [MainThread]: Command `dbt clean` failed at 23:31:32.625395 after 0.04 seconds
+[0m23:31:32.625574 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e158e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b35370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1131563f0>]}
+[0m23:31:32.625699 [debug] [MainThread]: Flushing usage events
+[0m23:31:33.376356 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: 'stg_slickride__raw_ride_updates'
+    config:
+      schema: 'raw'
+      contract:
+        enforced: true 
+    columns:
+        - name: SYSTEM_RECORD_ID
+          data_type: varchar
+
+        - name: RIDE_ID
+          data_type: varchar
+
+        - name: PASSENGER_NAME
+          data_type: varchar
+
+        - name: UPDATED_AT
+          data_type: timestamp
+
+        - name: RIDE_STATUS
+          data_type: varchar
+          data_tests:
+            - accepted_values:
+                arguments:
+                  values: ['PICKED_UP', 'ARRIVED', 'COMPLETED', 'ACCEPTED', 'REQUESTED']
+                
+        - name: FARE_AMOUNT
+          data_type: numeric(10, 2) 

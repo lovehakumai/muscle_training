@@ -1,0 +1,6 @@
+version: 2
+sources:
+  - name: 'slickride'
+    schema: 'PUBLIC'
+    tables: 
+      - name: 'RAW_RIDE_UPDATES'

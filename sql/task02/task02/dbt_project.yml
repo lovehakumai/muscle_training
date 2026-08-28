@@ -1,5 +1,6 @@
-name: 'task01'
+name: 'task02'
 version: '1.0.0'
+
 
 profile: 'muscle_training'
 
@@ -10,10 +11,11 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-clean-targets: 
+clean-targets:      
   - "target"
   - "dbt_packages"
 
 models:
-  task01:
-    +materialized: 'view'
+  task02:
+    +materialized: view
+    
