@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: stg_apexpay__raw_merchants
+  - name: stg_apexpay__raw_terminals
+  - name: stg_apexpay__raw_transactions
