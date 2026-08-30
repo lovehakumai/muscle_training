@@ -18,7 +18,7 @@ with merchants as (
         transactions 
     where
         transaction_status = 'SETTLED'
-        and date_trunc(month, transaction_timestamp) = '2026-07-01'::timestamp
+        and date_trunc(month, transaction_timestamp) = date_trunc(month, dateadd( 'MONTH', -1, CURRENT_DATE() ) )::timestamp
     group by 
         merchant_id
 )
