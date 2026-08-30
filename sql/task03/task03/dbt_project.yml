@@ -1,4 +1,4 @@
-name: 'task02'
+name: 'task03'
 version: '1.0.0'
 
 
@@ -16,13 +16,11 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  task02:
-    +database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
-    +schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
+  task03:
+    +database: "MUSCLE_DB_TASK03"
+    +schema: "PUBLIC"
     +materialized: view
     staging:
       +schema: 'staging'
     mart:
       +schema: 'mart'
-    intermediate:
-      +schema: 'intermediate'

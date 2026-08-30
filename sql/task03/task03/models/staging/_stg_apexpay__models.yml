@@ -2,5 +2,16 @@ version: 2
 
 models:
   - name: stg_apexpay__raw_merchants
+    columns:
+      - name: merchant_id
+        data_tests:
+         - not_null
+         - unique
+
   - name: stg_apexpay__raw_terminals
   - name: stg_apexpay__raw_transactions
+    columns:
+      - name: transaction_id
+        data_tests:
+         - not_null
+         - unique
