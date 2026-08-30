@@ -1,0 +1,53 @@
+version: 2
+
+sources:
+  - name: apexpay
+    database: muscle_db_task03
+    schema: public
+    tables:
+      - name: raw_merchants
+        columns:
+          - name: merchant_id
+            data_type: varchar
+          - name: merchant_name
+            data_type: varchar
+          - name: category
+            data_type: varchar
+          - name: country_code
+            data_type: varchar
+
+      - name: raw_terminals
+        columns:
+          - name: terminal_id
+            data_type: varchar
+          - name: merchant_id
+            data_type: varchar
+          - name: terminal_model
+            data_type: varchar
+          - name: is_active
+            data_type: boolean
+          - name: valid_from
+            data_type: timestamp_ntz
+          - name: valid_to
+            data_type: timestamp_ntz
+
+      - name: raw_transactions
+        columns:
+          - name: transaction_id
+            data_type: varchar
+          - name: merchant_id
+            data_type: varchar
+          - name: terminal_id
+            data_type: varchar
+          - name: transaction_timestamp
+            data_type: timestamp_ntz
+          - name: transaction_status
+            data_type: varchar
+          - name: amount
+            data_type: number
+          - name: fee_amount
+            data_type: number
+          - name: raw_payload
+            data_type: varchar
+          - name: user_agent_details
+            data_type: varchar

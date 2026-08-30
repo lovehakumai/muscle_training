@@ -1,0 +1,9 @@
+version: 2
+models: 
+  - name: fct_monthly_merchant_financial_summary
+    columns: 
+      - name: merchant_id
+        data_tests:
+          - not_null
+          - unique
+        
