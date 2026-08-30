@@ -14,3 +14,7 @@ sql/setup/envs/
 
 # dbt logs
 logs/
+# dbt package
+dbt_packages/
+# dbt target
+target/
