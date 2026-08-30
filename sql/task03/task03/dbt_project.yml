@@ -1,0 +1,22 @@
+name: 'task02'
+version: '1.0.0'
+
+
+profile: 'muscle_training'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:      
+  - "target"
+  - "dbt_packages"
+
+models:
+  task02:
+    +database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    +schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
+    +materialized: view
