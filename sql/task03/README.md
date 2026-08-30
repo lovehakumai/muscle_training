@@ -83,19 +83,33 @@ INSERT INTO raw_terminals (terminal_id, merchant_id, terminal_model, is_active, 
 -- MCH_002の端末
 ('TRM_201', 'MCH_002', 'MODEL_X', TRUE, '2026-01-01 00:00:00', NULL);
 
-INSERT INTO raw_transactions (transaction_id, merchant_id, terminal_id, transaction_timestamp, transaction_status, amount, fee_amount, raw_payload, user_agent_details) VALUES
+INSERT INTO raw_transactions (
+    transaction_id, 
+    merchant_id, 
+    terminal_id, 
+    transaction_timestamp, 
+    transaction_status, 
+    amount, 
+    fee_amount, 
+    raw_payload, 
+    user_agent_details
+)
 -- 正常系: 2026年7月のSETTLEDトランザクション（対象）
-('TX_001', 'MCH_001', 'TRM_101', '2026-07-05 14:00:00', 'SETTLED', 1000.00, 30.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'),
-('TX_002', 'MCH_001', 'TRM_102', '2026-07-15 18:30:00', 'SETTLED', 2500.00, 75.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'),
-('TX_003', 'MCH_002', 'TRM_201', '2026-07-20 10:15:00', 'SETTLED', 500.00, 15.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 US-Client'),
-
+SELECT 'TX_001', 'MCH_001', 'TRM_101', '2026-07-05 14:00:00'::TIMESTAMP_NTZ, 'SETTLED', 1000.00, 30.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'
+UNION ALL
+SELECT 'TX_002', 'MCH_001', 'TRM_102', '2026-07-15 18:30:00'::TIMESTAMP_NTZ, 'SETTLED', 2500.00, 75.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'
+UNION ALL
+SELECT 'TX_003', 'MCH_002', 'TRM_201', '2026-07-20 10:15:00'::TIMESTAMP_NTZ, 'SETTLED', 500.00, 15.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 US-Client'
+UNION ALL
 -- 罠1: 2026年7月だが、ステータスがFAILEDやREFUNDED（集計対象外。早期除外されるべき）
-('TX_004', 'MCH_001', 'TRM_101', '2026-07-08 12:00:00', 'FAILED', 8000.00, 0.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'),
-('TX_005', 'MCH_002', 'TRM_201', '2026-07-22 16:00:00', 'REFUNDED', 300.00, 9.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 US-Client'),
-
+SELECT 'TX_004', 'MCH_001', 'TRM_101', '2026-07-08 12:00:00'::TIMESTAMP_NTZ, 'FAILED', 8000.00, 0.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'
+UNION ALL
+SELECT 'TX_005', 'MCH_002', 'TRM_201', '2026-07-22 16:00:00'::TIMESTAMP_NTZ, 'REFUNDED', 300.00, 9.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 US-Client'
+UNION ALL
 -- 罠2: 対象ステータス(SETTLED)だが、過去月または未来月（2026年6月や8月。パーティション刈り込みで早期除外されるべき）
-('TX_006', 'MCH_001', 'TRM_101', '2026-06-30 23:55:00', 'SETTLED', 4000.00, 120.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'),
-('TX_007', 'MCH_003', 'TRM_301', '2026-08-01 01:00:00', 'SETTLED', 1200.00, 36.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Kyoto-Client');
+SELECT 'TX_006', 'MCH_001', 'TRM_101', '2026-06-30 23:55:00'::TIMESTAMP_NTZ, 'SETTLED', 4000.00, 120.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Tokyo-Client'
+UNION ALL
+SELECT 'TX_007', 'MCH_003', 'TRM_301', '2026-08-01 01:00:00'::TIMESTAMP_NTZ, 'SETTLED', 1200.00, 36.00, REPEAT('DUMMY_JSON_PAYLOAD_', 50), 'Mozilla/5.0 Kyoto-Client';
 ```
 
 ---
