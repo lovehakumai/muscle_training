@@ -1,0 +1,27 @@
+name: 'task03'
+version: '1.0.0'
+
+
+profile: 'muscle_training'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:      
+  - "target"
+  - "dbt_packages"
+
+models:
+  task03:
+    +database: "MUSCLE_DB_TASK03"
+    +schema: "PUBLIC"
+    +materialized: view
+    staging:
+      +schema: 'staging'
+    mart:
+      +schema: 'mart'
+      +materialized: 'table'
