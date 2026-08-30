@@ -1,0 +1,28 @@
+version: 2
+
+models: 
+  - name: mrt_omnicart
+    latest_version: 2
+    columns: 
+      - name: event_id 
+        data_type: VARCHAR
+      - name: user_id 
+        data_type: VARCHAR
+      - name: event_timestamp 
+        data_type: TIMESTAMP
+      - name: item_id 
+        data_type: VARCHAR
+        description: "interactions 配列内の各要素の item_id"
+      - name: position_index 
+        data_type: INTEGER 
+        description: "interactions 配列内のインデックス順序（0始まり）"
+      - name: discount_applied 
+        data_type: BOOLEAN
+        description: "各アイテムの属性に含まれる applied_discount（NULLの場合は FALSE として扱うこと）"
+      - name: raw_item_price 
+        data_type: DECIMAL(10,2)
+        description: "各アイテムの price"
+    versions:
+      - v: 1
+      - v: 2
+        description: "1 flatten execution, action_type only 'purchase'"

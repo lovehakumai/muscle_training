@@ -17,5 +17,6 @@ clean-targets:
 
 models:
   task02:
+    +database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    +schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
     +materialized: view
-    
