@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 # ----------------------------------------------------
 # Sales transaction data (Target to keep original row count)
