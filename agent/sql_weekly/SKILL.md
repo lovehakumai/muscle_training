@@ -64,22 +64,18 @@ description: SQL の週次実務相当演習（2時間程度）を出題する�
 
 ### 2. 出力先を決める
 
-```bash
-date +%Y-%m-%d
-```
-
-で今日の日付を取得し、`sql/_weekly/{YYYY-MM-DD}/` を作成する。**同じ日付のフォルダが既に存在する場合は、上書きせずユーザーに確認する。**
+`ls sql/_weekly/` で既存のディレクトリを確認し、最大の連番 `N` に1を足した `task_w_{N+1}`（例えば `task_w_05`。0埋め2桁）を出力先とする。**同名のフォルダが既に存在する場合は、上書きせずユーザーに確認する。**
 
 ### 3. ファイルを生成する
 
 | ファイル | 内容 |
 |---|---|
-| `sql/_weekly/{YYYY-MM-DD}/README.md` | 問題文（下の【出題フォーマット】に従う） |
-| `sql/_weekly/{YYYY-MM-DD}/setup.sql` | DDL とサンプルデータの INSERT 文 |
-| `sql/_weekly/{YYYY-MM-DD}/generate_data.py` | 大容量データを生成する場合のみ |
+| `sql/_weekly/task_w_{NN}/README.md` | 問題文（下の【出題フォーマット】に従う） |
+| `sql/_weekly/task_w_{NN}/setup.sql` | DDL とサンプルデータの INSERT 文 |
+| `sql/_weekly/task_w_{NN}/generate_data.py` | 大容量データを生成する場合のみ |
 
 ```bash
-python sql/run_sql.py _weekly/{YYYY-MM-DD}/setup.sql --env {環境名}
+python sql/run_sql.py _weekly/task_w_{NN}/setup.sql --env {環境名}
 ```
 
 **dbt プロジェクトのスキャフォールドは作らない。** ユーザーが自分で `dbt init` する部分も演習に含まれる。
@@ -108,6 +104,7 @@ python sql/run_sql.py _weekly/{YYYY-MM-DD}/setup.sql --env {環境名}
 - Snowflake に対応した SQL であること
 - **エッジケース（罠）となるデータを INSERT 文に必ず含める**
 - 大容量データを生成する Python スクリプトを提示してよいが、**Snowflake で EAI が使えないため限られたライブラリしか使えない**ことに留意する
+- **`setup.sql` の末尾（最後の `;` の後ろ）にコメントを書かないこと。** Snowflake Python コネクタが空のSQL文として解釈し、`empty sql` コンパイルエラーになるため。
 
 ### 初見の用語に関する例外
 
@@ -122,7 +119,7 @@ python sql/run_sql.py _weekly/{YYYY-MM-DD}/setup.sql --env {環境名}
 ## 出題フォーマット（README.md の中身）
 
 ```markdown
-# {YYYY-MM-DD} SQL Weekly
+# SQL Weekly task_w_{NN}
 
 今回選んだテーマ: [テーマ名]
 
@@ -145,7 +142,7 @@ python sql/run_sql.py _weekly/{YYYY-MM-DD}/setup.sql --env {環境名}
 ## 環境構築
 
 ```bash
-python sql/run_sql.py _weekly/{YYYY-MM-DD}/setup.sql --env {環境名}
+python sql/run_sql.py _weekly/task_w_{NN}/setup.sql --env {環境名}
 ```
 
 ## 提出物
@@ -185,11 +182,6 @@ Weekly は分量が取れるので、**罠を複数層に仕込む。** 過去�
 
 ## 英語コミュニケーションのレビューについて
 
-ユーザーが解答コードと共に**英語の説明（PR ディスクリプション）**を添えて提出してきた場合、コードの技術的レビューとは別に**【英語コミュニケーションの添削】**セクションを設ける。
+ユーザーが解答コードと共に**英語の説明（PR ディスクリプション）**を添えて提出してきた場合でも、出題時点（本スキル）ではレビューを行わない。
 
-評価基準：
-
-- **技術的な意思決定の理由**（なぜこのアプローチをとったのか、どんなメリットがあるのか）が、英語圏のシニアエンジニア・テックリードに論理的かつ簡潔に伝わるか
-- **表現のブラッシュアップ** — ネイティブエンジニアが実務で使う自然な言い回し（PREP法に基づく構成など）があれば改善案を提示する
-
-詳細なチェックリストは `agent/review/SKILL.md` の英語セクションにある。**出題時点ではこの節は使わない**（提出後のレビューは review スキルが担当する）。
+詳細なチェックリストと添削は `agent/review/SKILL.md` が担当し、提出後のレビュー時に `タスクフォルダ/FB_ENG_{連番}/README.md` に出力される。

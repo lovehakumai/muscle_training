@@ -62,23 +62,19 @@ description: SQL の日次短時間ドリル（15〜20分）を出題する。db
 
 ### 2. 出力先を決める
 
-```bash
-date +%Y-%m-%d
-```
-
-で今日の日付を取得し、`sql/_daily/{YYYY-MM-DD}/` を作成する。**同じ日付のフォルダが既に存在する場合は、上書きせずユーザーに確認する。**
+`ls sql/_daily/` で既存のディレクトリを確認し、最大の連番 `N` に1を足した `task_d_{N+1}`（例えば `task_d_05`。0埋め2桁）を出力先とする。**同名のフォルダが既に存在する場合は、上書きせずユーザーに確認する。**
 
 ### 3. ファイルを生成する
 
 | ファイル | 内容 |
 |---|---|
-| `sql/_daily/{YYYY-MM-DD}/README.md` | 問題文（下の【出題フォーマット】に従う） |
-| `sql/_daily/{YYYY-MM-DD}/setup.sql` | DDL とサンプルデータの INSERT 文 |
+| `sql/_daily/task_d_{NN}/README.md` | 問題文（下の【出題フォーマット】に従う） |
+| `sql/_daily/task_d_{NN}/setup.sql` | DDL とサンプルデータの INSERT 文 |
 
 `setup.sql` は `sql/run_sql.py` から実行できる。生成後、ユーザーに実行コマンドを伝える。
 
 ```bash
-python sql/run_sql.py _daily/{YYYY-MM-DD}/setup.sql --env {環境名}
+python sql/run_sql.py _daily/task_d_{NN}/setup.sql --env {環境名}
 ```
 
 README.md にも DDL を転記しておく（問題文だけを読んで内容が分かるようにするため）。
@@ -108,6 +104,7 @@ README.md にも DDL を転記しておく（問題文だけを読んで内容�
 - **dbt を使わない。** ワークシートでそのまま実行できる形にする
 - サンプルデータは **10行以内**。ただし**エッジケース（罠）を必ず含める**
 - Snowflake の SQL 構文であること
+- **`setup.sql` の末尾（最後の `;` の後ろ）にコメントを書かないこと。** Snowflake Python コネクタが空のSQL文として解釈し、`empty sql` コンパイルエラーになるため。
 
 ### 初見の用語に関する例外
 
@@ -122,7 +119,7 @@ README.md にも DDL を転記しておく（問題文だけを読んで内容�
 ## 出題フォーマット（README.md の中身）
 
 ```markdown
-# {YYYY-MM-DD} SQL Daily
+# SQL Daily task_d_{NN}
 
 今回選んだテーマ: [テーマ名]
 
@@ -145,7 +142,7 @@ README.md にも DDL を転記しておく（問題文だけを読んで内容�
 ## 環境構築
 
 ```bash
-python sql/run_sql.py _daily/{YYYY-MM-DD}/setup.sql --env {環境名}
+python sql/run_sql.py _daily/task_d_{NN}/setup.sql --env {環境名}
 ```
 
 ---
@@ -173,8 +170,7 @@ python sql/run_sql.py _daily/{YYYY-MM-DD}/setup.sql --env {環境名}
 
 ---
 
-## 英語の一言コメント
+## 英語コミュニケーションの添削について
 
-ユーザーが解答に英語のコメント（なぜこのアプローチを取ったか）を添えた場合、**1〜2行で簡潔に添削する。** 長い解説は不要。継続練習が目的なので、毎回短く指摘するだけでよい。
-
-詳細な英語レビューは `agent/review/SKILL.md` が担当する。
+ユーザーが解答に英語のコメント（PR本文など）を添えた場合、本スキルではレビューを行わず、`agent/review/SKILL.md` によるレビューを待つよう案内する。
+英語のフィードバックは、レビュー時に `タスクフォルダ/FB_ENG_{連番}/README.md` に出力される。

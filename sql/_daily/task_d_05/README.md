@@ -1,4 +1,4 @@
-# 2026-09-05 SQL Daily
+# SQL Daily task_d_05
 
 前回の指摘：GROUP BY抜けによる0件入力時の罠、およびCTE内での無意味なORDER BYの復習
 
@@ -42,7 +42,7 @@ INSERT INTO raw_daily_sales VALUES
 ## 環境構築
 
 ```bash
-python sql/run_sql.py _daily/2026-09-05/setup.sql --env {環境名}
+python sql/run_sql.py _daily/task_d_05/setup.sql --env {環境名}
 ```
 
 ---

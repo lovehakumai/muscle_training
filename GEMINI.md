@@ -26,13 +26,13 @@ Snowflake/dbt を中心とした Analytics/Data Platform 領域の技術習得�
 
 ```
 sql/
-  _daily/{YYYY-MM-DD}/        課題文(README.md)・環境構築(setup.sql)・自分の回答
-  _weekly/{YYYY-MM-DD}/       同上（dbt プロジェクトを含む）
-  envs/envs/.env.task{NN}     Snowflake接続情報（追跡対象外）
+  _daily/task_d_{NN}/        課題文(README.md)・環境構築(setup.sql)・自分の回答
+  _weekly/task_w_{NN}/       同上（dbt プロジェクトを含む）
+  envs/envs/.env.{環境名}     Snowflake接続情報（追跡対象外）
   run_sql.py                  SQL実行ランナー（相対パスを受け取る）
 python/
-  _daily/{YYYY-MM-DD}/        課題文(README.md)・自分の回答
-  _weekly/{YYYY-MM-DD}/       同上
+  _daily/task_d_{NN}/        課題文(README.md)・自分の回答
+  _weekly/task_w_{NN}/       同上
 agent/                        スキル定義（上記の表）
 ```
 
@@ -43,12 +43,13 @@ agent/                        スキル定義（上記の表）
 | `README.md` | 課題文 |
 | `setup.sql` | 環境構築SQL（SQLタスクのみ） |
 | `my_answer.sql` / `main.py` 等 | **自分の回答**（無援で書いた記録） |
-| `PR_FROM_ME.md` | 自分が書いたPR本文（英語の練習対象） |
-| `FB_from_AI_{NN}/` | AIによるレビュー |
+| `FB_ENG_{連番}/README.md` | PR本文（オリジナル）とそれに対する英語レビュー・添削 |
+| `PR_FROM_ME.md` | 自分が書いたPR本文（過去のタスクに残存・ghのフォールバック用） |
+| `FB_from_AI_{NN}/` | AIによる技術的なレビュー |
 
 ### 過去のタスクは命名が違う
 
-2026年9月上旬までのタスクは `task{NN}` 形式で、以下の不規則がある。
+2026年9月上旬までのタスクは `task{NN}` や `{YYYY-MM-DD}` 形式で、以下の不規則がある。
 
 - `FB/` `answers/` `answer/` — 別のAIが生成したフィードバックと模範解答（現在は生成しない）
 - `FB_from_Claude_{NN}/` — 別ツールで生成したレビュー
@@ -67,7 +68,7 @@ agent/                        スキル定義（上記の表）
 
 ### 自分の回答を書き換えない
 
-`task{NN}/` 直下のスクリプトは**無援で書いた記録**なので、修正しない。ここを直すと「そのとき何を書けたか」の記録が失われ、後から成長を測れなくなる。
+`各タスクフォルダ` 直下のスクリプトは**無援で書いた記録**なので、修正しない。ここを直すと「そのとき何を書けたか」の記録が失われ、後から成長を測れなくなる。
 
 修正版を示すときは、コード片として文中に書くか、`FB_from_AI_{NN}/` 配下に別ファイルとして置く。
 
