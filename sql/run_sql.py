@@ -5,6 +5,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import snowflake.connector
 
+# Set the base directory to the location of this script (run_sql.py)
+BASE_DIR = Path(__file__).resolve().parent
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Snowflake SQL Runner")
@@ -19,11 +21,13 @@ def parse_args():
 
 def load_environment(env_name: str | None):
     """Load the .env file based on the provided --env argument."""
+    
+    # Refer to the envs/envs/ directory based on the tree structure.
+    # If the .env files are located directly under envs/, change this to: BASE_DIR / "envs" / f".env.{env_name}"
     if env_name:
-        env_file = Path(f"setup/envs/.env.{env_name}")
-        print(env_file)
+        env_file = BASE_DIR / "envs" / "envs" / f".env.{env_name}"
     else:
-        env_file = Path("setup/envs/.env")
+        env_file = BASE_DIR / "envs" / "envs" / ".env"
         
     if not env_file.exists():
         print(f"⚠️  Warning: Configuration file '{env_file}' not found.")
@@ -33,7 +37,16 @@ def load_environment(env_name: str | None):
 
 
 def execute_sql_file(file_path: str):
-    print(f"🚀 Executing SQL file: {file_path}")
+    # Convert relative path to absolute path based on BASE_DIR
+    sql_path = Path(file_path)
+    if not sql_path.is_absolute():
+        sql_path = BASE_DIR / sql_path
+
+    if not sql_path.exists():
+        print(f"❌ Error: SQL file '{sql_path}' not found.")
+        sys.exit(1)
+
+    print(f"🚀 Executing SQL file: {sql_path}")
 
     user = os.getenv("SNOWFLAKE_USER")
     password = os.getenv("SNOWFLAKE_PASSWORD")
@@ -80,7 +93,7 @@ def execute_sql_file(file_path: str):
                 cursor.execute(f"USE SCHEMA {schema}")
 
         # Read and execute the target SQL file
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(sql_path, "r", encoding="utf-8") as f:
             sql_queries = f.read()
 
         cursors = conn.execute_string(sql_queries)
