@@ -1,7 +1,7 @@
 import pandas as pd
 
 # ----------------------------------------------------
-# Daily campaign performance log data
+# Daily campaign performance log data 
 # ----------------------------------------------------
 df_perf = pd.DataFrame({
     "campaign_id": [101, 101, 101, 102, 102, 103],
