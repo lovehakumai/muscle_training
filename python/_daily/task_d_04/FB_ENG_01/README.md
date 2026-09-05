@@ -40,7 +40,7 @@ But I'm sure there's better solution so I'd like to get any advices about it, th
 ### 表記・文法
 - **コロンの後のスペース欠落 (タイトル):**
   - `feat(pipeline):Add` ✗ → `feat(pipeline): Add`
-  - Conventional Commits の仕様では、コロンの後に必ずスペースが必要です。4回連続での指摘項目ですので、次回は必ず確認してください。
+  - Conventional Commits の仕様では、コロンの後に必ず半角スペースが必要です。過去の「コロン抜け」を意識してコロンを付与していただいた前進が見られますが、ツールによる自動解析を通すためにはスペースも必須のフォーマットとなります。
 - **不可算名詞の複数形:**
   - `any advices` ✗ → `any advice`
   - `advice` は不可算名詞であるため `s` は付きません（同様の誤りやすい単語に `information`, `feedback` があります）。
