@@ -1,0 +1,20 @@
+version: 2
+models: 
+  - name: "int_transactions_cleanse"
+    columns:
+      - name: transaction_id
+        data_tests:
+          - not_null 
+          - unique
+
+      - name: user_id
+        data_tests:
+          - not_null 
+
+      - name: transaction_timestamp
+        data_tests:
+          - not_null 
+
+      - name: purchase_amount
+
+      - name: points_earned

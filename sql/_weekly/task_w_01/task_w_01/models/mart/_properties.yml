@@ -1,0 +1,11 @@
+version: 2
+models: 
+  - name: fct_user_daily_points
+    columns: 
+      - name: user_id
+        data_tests:
+          - not_null 
+      - name: transaction_timestamp
+          - not_null 
+      - name: purchase_amount
+      - name: points_earned

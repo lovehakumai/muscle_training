@@ -1,0 +1,15 @@
+version: 2
+models:
+  - name: stg_ecommerce__transaction
+    columns: 
+      - name: transaction_id
+        data_type: varchar
+
+      - name: user_id
+        data_type: int
+
+      - name: transaction_timestamp
+        data_type: timestamp
+
+      - name: purchase_amount
+        data_type: int
