@@ -1,0 +1,7 @@
+version: 2
+sources: 
+  - name: ecommerce
+    schema: RAW
+    database: MUSCLE_DB_TASK_W_01
+    tables:
+      - name: raw_transactions
